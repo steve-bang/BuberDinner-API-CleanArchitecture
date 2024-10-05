@@ -1,4 +1,5 @@
 using BuberDinner.Application;
+using BuberDinner.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +9,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-// Add services from the BuberDinner.Application project
-builder.Services.AddApplication();
+// Add all services
+builder.Services
+    .AddApplication() // BuberDinner.Application
+    .AddInfrastructure(builder.Configuration); // BuberDinner.Infrastructure
+
 
 var app = builder.Build();
 
