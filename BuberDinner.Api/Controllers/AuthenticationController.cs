@@ -18,19 +18,19 @@ namespace BuberDinner.Api.Controllers
 
         [Route("register")]
         [HttpPost]
-        public IActionResult Register([FromBody] BuberDinner.Contracts.Authentication.RegisterRequest registerRequest)
+        public async Task<IActionResult> Register([FromBody] BuberDinner.Contracts.Authentication.RegisterRequest registerRequest)
         {
             return Ok(
-                _authenticationService.Register(registerRequest.FirstName, registerRequest.LastName, registerRequest.Email, registerRequest.Password)
+                await _authenticationService.Register(registerRequest.FirstName, registerRequest.LastName, registerRequest.Email, registerRequest.Password)
             );
         }
 
         [Route("login")]
         [HttpPost]
-        public IActionResult Login([FromBody] BuberDinner.Contracts.Authentication.LoginRequest loginRequest)
+        public async Task<IActionResult> Login([FromBody] BuberDinner.Contracts.Authentication.LoginRequest loginRequest)
         {
             return Ok(
-                _authenticationService.Login(loginRequest.Email, loginRequest.Password)
+                await _authenticationService.Login(loginRequest.Email, loginRequest.Password)
             );
         }
 
