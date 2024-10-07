@@ -1,7 +1,10 @@
-using BuberDinner.Application.Services.Authentication;
+using BuberDinner.Application.Features.Auth.Commands;
+using BuberDinner.Application.Features.Auth.Queries;
 using BuberDinner.Contracts.Authentication;
+using MediatR;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace BuberDinner.Api.Controllers
 {
@@ -9,19 +12,29 @@ namespace BuberDinner.Api.Controllers
     [Route("api/auth")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationService _authenticationService;
+        private readonly ISender _mediator;
 
-        public AuthenticationController(IAuthenticationService authenticationService)
+        public AuthenticationController(
+            ISender mediator
+        )
         {
-            _authenticationService = authenticationService;
+            _mediator = mediator;
         }
 
         [Route("register")]
         [HttpPost]
         public async Task<IActionResult> Register([FromBody] BuberDinner.Contracts.Authentication.RegisterRequest registerRequest)
         {
+            var registerCommand = new RegisterCommand
+            {
+                FirstName = registerRequest.FirstName,
+                LastName = registerRequest.LastName,
+                Email = registerRequest.Email,
+                Password = registerRequest.Password
+            };
+
             return Ok(
-                await _authenticationService.Register(registerRequest.FirstName, registerRequest.LastName, registerRequest.Email, registerRequest.Password)
+                await _mediator.Send(registerCommand)
             );
         }
 
@@ -29,8 +42,14 @@ namespace BuberDinner.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] BuberDinner.Contracts.Authentication.LoginRequest loginRequest)
         {
+            LoginQuery loginQuery = new LoginQuery
+            {
+                Email = loginRequest.Email,
+                Password = loginRequest.Password
+            };
+
             return Ok(
-                await _authenticationService.Login(loginRequest.Email, loginRequest.Password)
+                await _mediator.Send(loginQuery)
             );
         }
 
