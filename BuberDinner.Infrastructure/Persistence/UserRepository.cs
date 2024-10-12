@@ -1,4 +1,4 @@
-﻿using BuberDinner.Application.Common.Persistence;
+﻿using BuberDinner.Application.Common.Intefaces.Persistence;
 using BuberDinner.Domain.Entities;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
-﻿using BuberDinner.Application.Common.Authentication;
-using BuberDinner.Application.Common.Persistence;
+﻿using BuberDinner.Application.Common.Intefaces.Authentication;
+using BuberDinner.Application.Common.Intefaces.Persistence;
 using BuberDinner.Application.Features.Auth.Common;
 using BuberDinner.Domain.Errors;
 using MediatR;

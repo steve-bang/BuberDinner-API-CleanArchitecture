@@ -2,6 +2,7 @@ using BuberDinner.Api.Filters;
 using BuberDinner.Api.Middlewares;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
+using MapsterMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilt
 
 // Add all services
 builder.Services
+    .AddSingleton<IMapper, Mapper>()
     .AddApplication() // BuberDinner.Application
     .AddInfrastructure(builder.Configuration); // BuberDinner.Infrastructure
 

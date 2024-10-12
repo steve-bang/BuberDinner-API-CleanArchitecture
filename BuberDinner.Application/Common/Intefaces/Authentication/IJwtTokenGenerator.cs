@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuberDinner.Application.Common.Authentication
+namespace BuberDinner.Application.Common.Intefaces.Authentication
 {
     public interface IJwtTokenGenerator
     {

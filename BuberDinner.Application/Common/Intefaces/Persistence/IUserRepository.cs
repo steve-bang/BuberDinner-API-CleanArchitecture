@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuberDinner.Application.Common.Persistence
+namespace BuberDinner.Application.Common.Intefaces.Persistence
 {
     public interface IUserRepository
     {

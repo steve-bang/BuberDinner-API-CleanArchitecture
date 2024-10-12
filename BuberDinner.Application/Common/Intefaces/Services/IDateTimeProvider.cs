@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuberDinner.Application.Common.Services
+namespace BuberDinner.Application.Common.Intefaces.Services
 {
     public interface IDateTimeProvider
     {
