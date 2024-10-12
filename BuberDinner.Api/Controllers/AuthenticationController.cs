@@ -3,15 +3,16 @@ using BuberDinner.Application.Features.Auth.Queries;
 using BuberDinner.Contracts.Authentication;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace BuberDinner.Api.Controllers
 {
-    [ApiController]
     [Route("api/auth")]
-    public class AuthenticationController : ControllerBase
+    [AllowAnonymous]
+    public class AuthenticationController : ApiController
     {
         private readonly ISender _mediator;
 

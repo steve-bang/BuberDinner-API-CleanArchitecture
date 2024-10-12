@@ -16,7 +16,7 @@ namespace BuberDinner.Application
                 config.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
 
                 // Register the ValidationBehavior
-                config.AddBehavior(typeof(ValidationBehavior<,>));
+                //config.AddBehavior(typeof(ValidationBehavior<,>));
             });
 
             //services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

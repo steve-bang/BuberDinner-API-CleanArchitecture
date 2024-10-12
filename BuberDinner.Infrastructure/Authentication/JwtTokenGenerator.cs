@@ -38,8 +38,8 @@ namespace BuberDinner.Infrastructure.Authentication
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName ?? "example"),
-                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName ?? "example"),
+                new Claim(JwtRegisteredClaimNames.GivenName, user.FirstName ?? "steve"),
+                new Claim(JwtRegisteredClaimNames.FamilyName, user.LastName ?? "bang"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -48,6 +48,7 @@ namespace BuberDinner.Infrastructure.Authentication
                 issuer: _jwtSettings.Issuer,
                 claims: claims,
                 expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpriryMinutes),
+                audience: _jwtSettings.Audience,
                 signingCredentials: signingCredentials
                 );
 

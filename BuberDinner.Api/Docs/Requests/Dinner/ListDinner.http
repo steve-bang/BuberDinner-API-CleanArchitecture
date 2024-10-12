@@ -1,0 +1,7 @@
+@BuberDinner.Api_HostAddress = http://localhost:5191
+@BubberDinner.AccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhOTI1MzkxZC05Y2E5LTQ0YTMtYjQzYS0yZTE0MzUyNzQ5MTMiLCJnaXZlbl9uYW1lIjoic3RldmUiLCJmYW1pbHlfbmFtZSI6ImJhbmciLCJqdGkiOiJjNTdlYmRhZC0zNzVhLTQxZTYtOWEzNC0wOGI0ZDQyYTA2OTEiLCJleHAiOjE3Mjg3NDQxNTIsImlzcyI6IkJ1YmVyRGlubmVyIiwiYXVkIjoiQnViZXJEbm5lciJ9.1KZK32sPx5Nm_Yg4WY9N1XZWjlp3_13cJQwQcTXnKSY
+
+GET {{BuberDinner.Api_HostAddress}}/api/dinners
+Authorization: Bearer {{BubberDinner.AccessToken}}
+
+###

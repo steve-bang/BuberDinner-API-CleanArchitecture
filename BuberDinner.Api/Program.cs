@@ -34,6 +34,9 @@ app.UseHttpsRedirection();
 // Add ErrorHandlingMiddleware
 //app.UseMiddleware<ErrorHandlingMiddleware>();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 
