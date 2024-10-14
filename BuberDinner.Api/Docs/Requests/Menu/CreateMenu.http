@@ -1,0 +1,31 @@
+@BuberDinner.Api_HostAddress = http://localhost:5191
+@BubberDinner.AccessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhOTI1MzkxZC05Y2E5LTQ0YTMtYjQzYS0yZTE0MzUyNzQ5MTMiLCJnaXZlbl9uYW1lIjoic3RldmUiLCJmYW1pbHlfbmFtZSI6ImJhbmciLCJqdGkiOiJjNTdlYmRhZC0zNzVhLTQxZTYtOWEzNC0wOGI0ZDQyYTA2OTEiLCJleHAiOjE3Mjg3NDQxNTIsImlzcyI6IkJ1YmVyRGlubmVyIiwiYXVkIjoiQnViZXJEbm5lciJ9.1KZK32sPx5Nm_Yg4WY9N1XZWjlp3_13cJQwQcTXnKSY
+@BubberDinner.HostId = 36750a28-226b-4ea9-a795-d98409f2e3d1
+
+POST {{BuberDinner.Api_HostAddress}}/api/hosts/{{BubberDinner.HostId}}/menus
+Authorization: Bearer {{BubberDinner.AccessToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Dinner Menu",
+  "description": "Dinner Menu Description",
+  "sections": [
+    {
+      "name": "Appetizer",
+      "description": "Appetizer Description",
+      "items": [
+        {
+          "name": "Appetizer 1",
+          "description": "Appetizer 1 Description"
+        },
+        {
+          "name": "Appetizer 2",
+          "description": "Appetizer 2 Description"
+        }
+      ]
+    }
+  ]
+}
+
+###

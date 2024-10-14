@@ -8,6 +8,11 @@ namespace BuberDinner.Application
 {
     public static class DependencyInjection
     {
+        /// <summary>
+        /// Add the application services
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddMediatR(config =>

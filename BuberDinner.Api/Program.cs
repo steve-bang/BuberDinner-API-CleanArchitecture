@@ -1,3 +1,4 @@
+using BuberDinner.Api;
 using BuberDinner.Api.Filters;
 using BuberDinner.Api.Middlewares;
 using BuberDinner.Application;
@@ -6,16 +7,10 @@ using MapsterMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
 
 // Add all services
 builder.Services
-    .AddSingleton<IMapper, Mapper>()
+    .AddPresenation() // BuberDinner.Api
     .AddApplication() // BuberDinner.Application
     .AddInfrastructure(builder.Configuration); // BuberDinner.Infrastructure
 

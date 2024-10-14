@@ -20,6 +20,12 @@ namespace BuberDinner.Infrastructure
 {
     public static class DependencyInjection
     {
+        /// <summary>
+        /// Add all services from Infrastructure
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configurationManager"></param>
+        /// <returns></returns>
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, ConfigurationManager configurationManager)
         {
 
@@ -30,6 +36,7 @@ namespace BuberDinner.Infrastructure
 
             // Register the Repository
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
 
             return services;
         }
