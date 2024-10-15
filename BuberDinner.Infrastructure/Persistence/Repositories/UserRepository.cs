@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuberDinner.Infrastructure.Persistence
+namespace BuberDinner.Infrastructure.Persistence.Repositories
 {
     public class UserRepository : IUserRepository
     {
@@ -14,7 +14,7 @@ namespace BuberDinner.Infrastructure.Persistence
 
         public async Task AddAsync(User user)
         {
-           await Task.Run(() => _users.Add(user));
+            await Task.Run(() => _users.Add(user));
         }
 
         public async Task<bool> ExistsEmailAsync(string email)

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BuberDinner.Infrastructure.Persistence
+namespace BuberDinner.Infrastructure.Persistence.Repositories
 {
     public class MenuRepository : IMenuRepository
     {

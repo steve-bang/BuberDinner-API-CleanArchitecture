@@ -2,6 +2,7 @@
 using BuberDinner.Domain.Dinner.ValueObjects;
 using BuberDinner.Domain.Host.ValueObjects;
 using BuberDinner.Domain.Menu.Entities;
+using BuberDinner.Domain.Menu.Events;
 using BuberDinner.Domain.Menu.ValueObjects;
 using BuberDinner.Domain.MenuReview.ValueObjects;
 using System;
@@ -68,8 +69,9 @@ namespace BuberDinner.Domain.Menu
             );
         }
 
-        public static Menu Create(HostId hostId,string name, string description, List<MenuSection> sections)
+        public static Menu Create(HostId hostId,string name, string description, List<MenuSection> sections = null)
         {
+            // Create new menu object
             var menu = new Menu(
                     MenuId.CreateUnique(),
                     hostId,
@@ -79,7 +81,13 @@ namespace BuberDinner.Domain.Menu
                     DateTime.UtcNow
             );
 
-            menu.AddSections(sections);
+            if (sections != null)
+            {
+                menu.AddSections(sections);
+            }
+
+            // Add domain event
+            menu.AddDomainEvent(new MenuCreatedEvent(menu));
 
             return menu;
         }

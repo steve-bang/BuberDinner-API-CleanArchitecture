@@ -3,6 +3,8 @@ using BuberDinner.Application.Common.Intefaces.Persistence;
 using BuberDinner.Application.Common.Intefaces.Services;
 using BuberDinner.Infrastructure.Authentication;
 using BuberDinner.Infrastructure.Persistence;
+using BuberDinner.Infrastructure.Persistence.Interceptors;
+using BuberDinner.Infrastructure.Persistence.Repositories;
 using BuberDinner.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +44,8 @@ namespace BuberDinner.Infrastructure
                             )
             );
 
+
+            services.AddScoped<PublishDomainEventsInterceptor>();
 
             // Register the Repository
             services.AddScoped<IUserRepository, UserRepository>();
