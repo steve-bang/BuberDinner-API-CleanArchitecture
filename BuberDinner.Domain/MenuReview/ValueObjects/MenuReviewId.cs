@@ -22,6 +22,11 @@ namespace BuberDinner.Domain.MenuReview.ValueObjects
             return new MenuReviewId(Guid.NewGuid());
         }
 
+        public static MenuReviewId Create(Guid value)
+        {
+            return new MenuReviewId(value);
+        }
+
         public override IEnumerable<object> GetEqualityComponents()
         {
             yield return Value;

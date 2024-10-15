@@ -17,6 +17,9 @@ namespace BuberDinner.Domain.Dinner.ValueObjects
             Value = value;
         }
 
+        // Parameterless constructor required by EF Core
+        public DinnerId() { }
+
         public static DinnerId CreateUnique()
         {
             return new DinnerId(Guid.NewGuid());

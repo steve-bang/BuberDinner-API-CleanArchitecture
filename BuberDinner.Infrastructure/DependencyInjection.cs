@@ -5,6 +5,7 @@ using BuberDinner.Infrastructure.Authentication;
 using BuberDinner.Infrastructure.Persistence;
 using BuberDinner.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -32,6 +33,14 @@ namespace BuberDinner.Infrastructure
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
             services.AddAuth(configurationManager);
+
+            // Add DbContext
+            services.AddDbContext<BuberDinnerDbContext>(options =>
+                           options.UseSqlServer(
+                             configurationManager.GetConnectionString("DefaultConnection"),
+                                 b => b.MigrationsAssembly(typeof(BuberDinnerDbContext).Assembly.FullName)
+                            )
+            );
 
 
             // Register the Repository

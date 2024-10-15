@@ -14,11 +14,13 @@ namespace BuberDinner.Domain.Menu
 {
     public class Menu : AggregateRoot<MenuId>
     {
-        private readonly List<MenuSection> _sections = new List<MenuSection>();
+        private readonly List<MenuSection> _sections = new();
 
-        private readonly List<DinnerId> _dinnerIds = new List<DinnerId>();
+        private readonly List<DinnerId> _dinnerIds = new();
 
-        private readonly List<MenuReviewId> _menuReviewIds = new List<MenuReviewId>();
+        private readonly List<MenuReviewId> _menuReviewIds = new();
+
+        public HostId HostId { get; }
 
         public string Name { get; set; }
 
@@ -27,8 +29,6 @@ namespace BuberDinner.Domain.Menu
         public float AverageRating { get; set; }
 
         public IReadOnlyList<MenuSection> Sections => _sections.AsReadOnly();
-
-        public HostId HostId { get; }
 
         public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
 
