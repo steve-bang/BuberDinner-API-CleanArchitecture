@@ -33,14 +33,14 @@ namespace BuberDinner.Application.Features.Auth.Queries
 
             if (user == null)
             {
-                throw Error.User.EmailNotFound;
+                throw BuberError.User.EmailNotFound;
             }
 
 
             // 2. Check if password is correct
             if (user.Password != request.Password)
             {
-                throw Error.User.PasswordInvalid;
+                throw BuberError.User.PasswordInvalid;
             }
 
 

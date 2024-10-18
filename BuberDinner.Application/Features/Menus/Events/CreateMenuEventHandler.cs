@@ -12,6 +12,8 @@ namespace BuberDinner.Application.Features.Menus.Events
     {
         public Task Handle(MenuCreatedEvent notification, CancellationToken cancellationToken)
         {
+            // Handle the event here.
+            // Example: Send an email to the user. Notify the user.
             return Task.CompletedTask;
         }
     }

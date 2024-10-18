@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BuberDinner.Domain.Errors
 {
-    public partial class Error
+    public partial class BuberError
     {
         public static class User
         {
@@ -56,6 +57,14 @@ namespace BuberDinner.Domain.Errors
             public static DataNotFoundException EmailNotFound => new DataNotFoundException("User.EmailNotFound", "The email was not found.");
 
             public static DataNotFoundException UsernameNotFound => new DataNotFoundException("User.UsernameNotFound", "The username was not found.");
+
+            public static BuberException AccessTokenInvalid => new BadRequestException("User.AccessTokenInvalid", "The access token is invalid.");
+
+            public static BuberException RefreshTokenInvalid => new BadRequestException("User.RefreshTokenInvalid", "The refresh token is invalid.");
+
+            public static BuberException Unauthorized => new BuberException((int)HttpStatusCode.Unauthorized, "User.Unauthorized", "The user is not authorized to access this resource");
+
+            public static BuberException Forbidden => new BuberException((int)HttpStatusCode.Forbidden, "User.Forbidden", "The user is not allowed to access this resource");
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuberDinner.Domain.Errors
 {
-    public partial class Error
+    public partial class BuberError
     {
     }
 }

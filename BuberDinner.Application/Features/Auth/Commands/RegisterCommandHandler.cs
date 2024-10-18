@@ -30,7 +30,7 @@ namespace BuberDinner.Application.Features.Auth.Commands
 
             if (existsEmail)
             {
-                throw Error.User.EmailAlreadyExists;
+                throw BuberError.User.EmailAlreadyExists;
             }
 
 

@@ -1,6 +1,7 @@
 ﻿using BuberDinner.Application.Common.Intefaces.Authentication;
 using BuberDinner.Application.Common.Intefaces.Persistence;
 using BuberDinner.Application.Common.Intefaces.Services;
+using BuberDinner.Domain.Exceptions;
 using BuberDinner.Infrastructure.Authentication;
 using BuberDinner.Infrastructure.Persistence;
 using BuberDinner.Infrastructure.Persistence.Interceptors;
@@ -16,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -71,6 +73,21 @@ namespace BuberDinner.Infrastructure
                 .AddJwtBearer(
                     options =>
                     {
+                        options.Events.OnAuthenticationFailed = context =>
+                        {
+                            throw new BadRequestException("Token.Invalid", "The token is invalid");
+                        };
+
+                        options.Events.OnForbidden = context =>
+                        {
+                            throw BuberDinner.Domain.Errors.BuberError.User.Forbidden;
+                        };
+
+                        options.Events.OnChallenge = context =>
+                        {
+                            throw BuberDinner.Domain.Errors.BuberError.User.Unauthorized;
+                        };
+
                         options.TokenValidationParameters = new TokenValidationParameters
                         {
                             ValidateIssuer = true,
